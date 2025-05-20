@@ -1,10 +1,7 @@
 package main
 
 import (
-	"net/http"
-
 	"github.com/amoscookeh/go-vibes"
-	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -12,40 +9,39 @@ func main() {
 	r := vibes.Default()
 
 	// Define routes
-	r.GET("/ok", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
+	r.GET("/ok", func(c *vibes.Context) {
+		c.JSON(vibes.StatusCodes.OK, vibes.Map{
 			"message": "All good! Check the status emoji!",
 		})
 	})
 
-	r.GET("/created", func(c *gin.Context) {
-		c.JSON(http.StatusCreated, gin.H{
+	r.GET("/created", func(c *vibes.Context) {
+		c.JSON(vibes.StatusCodes.Created, vibes.Map{
 			"message": "Resource created! Check the status emoji!",
 		})
 	})
 
-	r.GET("/bad-request", func(c *gin.Context) {
-		c.JSON(http.StatusBadRequest, gin.H{
+	r.GET("/bad-request", func(c *vibes.Context) {
+		c.JSON(vibes.StatusCodes.BadRequest, vibes.Map{
 			"message": "Bad request! Check the status emoji!",
 		})
 	})
 
-	r.GET("/not-found", func(c *gin.Context) {
-		c.JSON(http.StatusNotFound, gin.H{
+	r.GET("/not-found", func(c *vibes.Context) {
+		c.JSON(vibes.StatusCodes.NotFound, vibes.Map{
 			"message": "Not found! Check the status emoji!",
 		})
 	})
 
-	r.GET("/server-error", func(c *gin.Context) {
-		c.JSON(http.StatusInternalServerError, gin.H{
+	r.GET("/server-error", func(c *vibes.Context) {
+		c.JSON(vibes.StatusCodes.InternalServerError, vibes.Map{
 			"message": "Server error! Check the status emoji!",
 		})
 	})
 
 	// HTML response example
-	r.GET("/html-ok", func(c *gin.Context) {
-		c.Header("Content-Type", "text/html")
-		c.String(http.StatusOK, `
+	r.GET("/html-ok", func(c *vibes.Context) {
+		c.HTML(vibes.StatusCodes.OK, `
 			<html>
 				<head>
 					<title>Vibes Framework Demo</title>
@@ -68,9 +64,8 @@ func main() {
 	})
 
 	// HTML error example
-	r.GET("/html-error", func(c *gin.Context) {
-		c.Header("Content-Type", "text/html")
-		c.String(http.StatusNotFound, `
+	r.GET("/html-error", func(c *vibes.Context) {
+		c.HTML(vibes.StatusCodes.NotFound, `
 			<html>
 				<head>
 					<title>Vibes Framework Demo - Error</title>
@@ -92,9 +87,8 @@ func main() {
 		`)
 	})
 
-	r.GET("/text", func(c *gin.Context) {
-		c.Header("Content-Type", "text/plain")
-		c.String(http.StatusOK, "This is a plain text response. The emoji status should be prepended.")
+	r.GET("/text", func(c *vibes.Context) {
+		c.String(vibes.StatusCodes.OK, "This is a plain text response. The emoji status should be prepended.")
 	})
 
 	r.Run(":8080")
