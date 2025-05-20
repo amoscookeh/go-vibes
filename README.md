@@ -2,8 +2,6 @@
 
 **Because life's too short for boring HTTP status codes and logs**
 
-![Go-Vibes Banner](https://via.placeholder.com/800x200?text=Go-Vibes:+The+Framework+With+Feelings)
-
 In the new era of vibe coders, why do we still subscribe to the boring ways of the past? 200 OK??? LAME!!! 404?? What does that even mean to a vibe coder like me???
 
 Introducing - Go-Vibes. With Go-Vibes, you will never be bored coding again. Our team of talented vibe coders have built this framework with one goal in mind - to make vibe coding vibier than ever.
