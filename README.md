@@ -109,8 +109,4 @@ Check the examples directory:
 
 We replace numerical status codes with expressive emojis for more intuitive, visual API responses. Why use cold numbers when emojis can express the true vibe?
 
-## 📜 License
-
-Go-Vibes is licensed under the [Very Permissive Vibes License (VPVL)](docs/concepts/license.md).
-
 *Warning: May cause excessive joy in otherwise dull development environments.*
