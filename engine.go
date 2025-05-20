@@ -4,24 +4,34 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// VibesEngine wraps the Gin engine to provide the vibes functionality
-type VibesEngine struct {
-	*gin.Engine
+func init() {
+	SetReleaseMode()
 }
 
-// New creates a new VibesEngine with default settings
+type VibesEngine struct {
+	*gin.Engine
+	Logger *VibeLogger
+}
+
+// disables Gin's debug logs
+func SetReleaseMode() {
+	gin.SetMode(gin.ReleaseMode)
+}
+
 func New() *VibesEngine {
 	engine := gin.New()
 
 	vibesEngine := &VibesEngine{
 		Engine: engine,
+		Logger: DefaultVibeLogger(),
 	}
 
-	// Apply the emoji status middleware by default
+	// apply vibes middleware
 	engine.Use(EmojiStatusMiddleware())
-
-	// Add default middleware from gin
+	engine.Use(EmotionalLoggingMiddleware(vibesEngine.Logger))
 	engine.Use(gin.Recovery())
+
+	vibesEngine.Logger.Fyi("go-vibes engine created with extra vibes ✨")
 
 	return vibesEngine
 }
@@ -32,17 +42,25 @@ func Default() *VibesEngine {
 
 	vibesEngine := &VibesEngine{
 		Engine: engine,
+		Logger: DefaultVibeLogger(),
 	}
 
 	// inject emoji middleware at the beginning
 	middlewares := engine.Handlers
 	engine.Handlers = make([]gin.HandlerFunc, 0, len(middlewares)+1)
+
+	// add vibes middleware first
 	engine.Use(EmojiStatusMiddleware())
+	engine.Use(EmotionalLoggingMiddleware(vibesEngine.Logger))
+
+	// add other middlewares back
 	for _, middleware := range middlewares {
 		if middleware != nil {
 			engine.Use(middleware)
 		}
 	}
+
+	vibesEngine.Logger.Fyi("go-vibes engine started with extra vibes ✨")
 
 	return vibesEngine
 }

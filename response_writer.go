@@ -10,14 +10,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// VibesResponseWriter wraps the gin.ResponseWriter to inject emoji status
 type VibesResponseWriter struct {
 	gin.ResponseWriter
 	body       *bytes.Buffer
 	statusCode int
 }
 
-// NewVibesResponseWriter creates a new VibesResponseWriter
 func NewVibesResponseWriter(c *gin.Context) *VibesResponseWriter {
 	return &VibesResponseWriter{
 		ResponseWriter: c.Writer,
@@ -26,7 +24,6 @@ func NewVibesResponseWriter(c *gin.Context) *VibesResponseWriter {
 	}
 }
 
-// WriteHeader overrides the original WriteHeader to capture the status code
 func (w *VibesResponseWriter) WriteHeader(code int) {
 	w.statusCode = code
 
@@ -37,7 +34,6 @@ func (w *VibesResponseWriter) WriteHeader(code int) {
 	w.ResponseWriter.WriteHeader(http.StatusOK)
 }
 
-// Write overrides the original Write to capture the response body
 func (w *VibesResponseWriter) Write(data []byte) (int, error) {
 	contentType := w.Header().Get("Content-Type")
 	emojiStatus := GetStatusEmoji(w.statusCode)

@@ -92,12 +92,10 @@ func main() {
 		`)
 	})
 
-	// Plain text response example
 	r.GET("/text", func(c *gin.Context) {
 		c.Header("Content-Type", "text/plain")
 		c.String(http.StatusOK, "This is a plain text response. The emoji status should be prepended.")
 	})
 
-	// Run the server
 	r.Run(":8080")
 }

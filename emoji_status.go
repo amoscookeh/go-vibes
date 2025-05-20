@@ -4,7 +4,6 @@ import (
 	"net/http"
 )
 
-// StatusEmojiMap maps HTTP status codes to their corresponding emoji representations
 var StatusEmojiMap = map[int]string{
 	http.StatusOK:                  "✅👌🆗",  // 200
 	http.StatusCreated:             "🆕👶✨",  // 201
@@ -28,7 +27,6 @@ var StatusEmojiMap = map[int]string{
 	http.StatusGatewayTimeout:      "⏱️🚪⌛", // 504
 }
 
-// GetStatusEmoji returns the emoji representation for a given HTTP status code
 func GetStatusEmoji(statusCode int) string {
 	if emoji, exists := StatusEmojiMap[statusCode]; exists {
 		return emoji
