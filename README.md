@@ -128,3 +128,36 @@ Check the examples directory:
 We replace numerical status codes with expressive emojis for more intuitive, visual API responses. Why use cold numbers when emojis can express the true vibe?
 
 *Warning: May cause excessive joy in otherwise dull development environments.*
+
+## Pinecone Integration
+
+This project includes a script for uploading documentation to Pinecone for vector search capabilities.
+
+### Setup
+
+1. Create a Pinecone account and obtain an API key
+2. Create a dense index with dimension 1536
+3. Add the API key to your GitHub repository secrets as `PINECONE_API_KEY`
+
+### Running Locally
+
+To run the script locally:
+
+```bash
+# Set the API key in your environment
+export PINECONE_API_KEY=your_pinecone_api_key
+
+# Run the script
+go run scripts/upsert_pinecone.go --path ./docs --namespace go-vibes
+```
+
+### GitHub Actions
+
+The repository includes a GitHub Actions workflow that automatically updates the Pinecone index whenever changes are made to the docs directory.
+
+To set up:
+
+1. Go to your GitHub repository settings
+2. Navigate to Secrets and variables → Actions
+3. Add a new repository secret named `PINECONE_API_KEY` with your Pinecone API key
+4. The workflow will run automatically on every push to the main branch that includes changes to the docs directory
