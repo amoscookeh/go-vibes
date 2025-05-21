@@ -1,10 +1,11 @@
 # 🚀 Quick Start
 
-*Give your API endpoints feelings in 5 minutes or less*
+_Give your API endpoints feelings in 5 minutes or less_
 
 ## Your First Vibey Application
 
-If you haven't installed Go-Vibes yet, check out the [Installation Guide](installation.md). Already vibey? Let's proceed!
+If you haven't installed Go-Vibes yet, check out the [Installation Guide](installation.md). Already
+vibey? Let's proceed!
 
 ### Step 1: Create a new project
 
@@ -139,18 +140,21 @@ Now that you've created your first vibey application, check out:
 
 - [Configuration Guide](configuration.md) to customize your vibes
 - [Emoji Status Responses](../guides/emoji-status.md) for detailed information on status emojis
-- [Emotional Logging](../guides/emotional-logging.md) to learn the full range of emotional expressions
+- [Emotional Logging](../guides/emotional-logging.md) to learn the full range of emotional
+  expressions
 
 ## Troubleshooting
 
 **Problem**: My application shows no emotions.  
-**Solution**: Check that you're using `vibes.Default()` and not plain `gin.Default()`. Don't suppress your code's feelings!
+**Solution**: Check that you're using `vibes.Default()` and not plain `gin.Default()`. Don't
+suppress your code's feelings!
 
 **Problem**: My team doesn't appreciate my vibey code.  
 **Solution**: Find a new team. Life's too short to work with people who don't appreciate good vibes.
 
 **Problem**: I can't stop adding emojis to everything now.  
-**Solution**: This is not a problem. This is enlightenment. 🧘‍♂️ 
+**Solution**: This is not a problem. This is enlightenment. 🧘‍♂️
 
 **Problem**: My application panics when I use GET, POST, PUT, or DELETE.  
-**Solution**: Use the vibey alternatives: VIBE, MANIFEST, ALIGN, and RELEASE. Your code will thank you for the positive energy flow!
+**Solution**: Use the vibey alternatives: VIBE, MANIFEST, ALIGN, and RELEASE. Your code will thank
+you for the positive energy flow!

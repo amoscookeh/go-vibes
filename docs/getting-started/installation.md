@@ -1,6 +1,6 @@
 # 📦 Installation
 
-*Because setting up a framework should give you good vibes, not headaches*
+_Because setting up a framework should give you good vibes, not headaches_
 
 ## Prerequisites
 
@@ -18,28 +18,33 @@ Before diving into the vibey wonderland of Go-Vibes, you'll need:
 go get github.com/amoscookeh/go-vibes
 ```
 
-*That's it. Seriously. Why complicate things when you're trying to vibe?*
+_That's it. Seriously. Why complicate things when you're trying to vibe?_
 
 ### The Unnecessarily Complex Way (For Traditional Developers)
 
-If you're still attached to old-school development practices and enjoy making things harder than they need to be:
+If you're still attached to old-school development practices and enjoy making things harder than
+they need to be:
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/amoscookeh/go-vibes.git
    ```
 
 2. Navigate to the project:
+
    ```bash
    cd go-vibes
    ```
 
 3. Build it (for that authentic DIY feeling):
+
    ```bash
    go build
    ```
 
 4. Install it:
+
    ```bash
    go install
    ```
@@ -62,7 +67,7 @@ func main() {
     r := vibes.Default()
     if r != nil {
         fmt.Println("🎉 Go-Vibes is installed! Your code's emotional journey can begin!")
-        
+
         // Add a simple vibey endpoint (using VIBE instead of GET)
         r.VIBE("/check", func(c *vibes.Context) {
             c.JSON(vibes.StatusCodes.OK, vibes.Map{
@@ -70,7 +75,7 @@ func main() {
                 "energy": "immaculate",
             })
         })
-        
+
         fmt.Println("✨ Added a VIBE endpoint at /check")
     } else {
         fmt.Println("😭 Something went wrong with your vibes installation.")
@@ -78,8 +83,9 @@ func main() {
 }
 ```
 
-Remember: In Go-Vibes, we don't use boring HTTP methods like GET, POST, PUT, and DELETE. 
-Instead, we use vibey alternatives:
+Remember: In Go-Vibes, we don't use boring HTTP methods like GET, POST, PUT, and DELETE. Instead, we
+use vibey alternatives:
+
 - Use **VIBE** instead of GET
 - Use **MANIFEST** instead of POST
 - Use **ALIGN** instead of PUT
@@ -94,12 +100,14 @@ Go-Vibes works with:
 - Developers who secretly use emojis in their commit messages
 
 Go-Vibes probably won't work with:
+
 - Developers who say "emoji are unprofessional" (why are you even here?)
 - Code reviewers who hate joy
 - Systems that cannot process Unicode (it's the 21st century, upgrade already)
 
 ## Next Steps
 
-Now that you've installed Go-Vibes, head over to [Quick Start](quick-start.md) to create your first emotionally intelligent API endpoint!
+Now that you've installed Go-Vibes, head over to [Quick Start](quick-start.md) to create your first
+emotionally intelligent API endpoint!
 
-Remember: The journey to vibey code is not a destination; it's a lifestyle. 🧘‍♂️✨ 
+Remember: The journey to vibey code is not a destination; it's a lifestyle. 🧘‍♂️✨
