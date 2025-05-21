@@ -1,4 +1,4 @@
-module github.com/amoscookeh/go-vibes/examples/basic
+module github.com/amoscookeh/go-vibes/examples/vibey_methods
 
 go 1.21
 

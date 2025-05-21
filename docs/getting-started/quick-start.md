@@ -35,10 +35,7 @@ Create a file named `main.go` with this emotionally expressive code:
 package main
 
 import (
-	"net/http"
-
 	"github.com/amoscookeh/go-vibes"
-	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -50,27 +47,27 @@ func main() {
 	logger.Fyi("Starting my first vibey application! SO EXCITED!")
 
 	// Define some routes with emotional responses
-	r.GET("/happy", func(c *gin.Context) {
+	r.VIBE("/happy", func(c *vibes.Context) {
 		logger.Fyi("Someone is looking for happiness!")
-		c.JSON(http.StatusOK, gin.H{
+		c.JSON(vibes.StatusCodes.OK, vibes.Map{
 			"mood": "ecstatic",
 			"message": "Everything is awesome!",
 		})
 		// Automatically adds ✅👌🆗 to your response!
 	})
 
-	r.GET("/sad", func(c *gin.Context) {
+	r.VIBE("/sad", func(c *vibes.Context) {
 		logger.Uhoh("Oh no, someone is feeling blue...")
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(vibes.StatusCodes.BadRequest, vibes.Map{
 			"mood": "melancholy",
 			"message": "Sorry you're feeling down",
 		})
 		// Automatically adds 💔👿😭 to your response!
 	})
 
-	r.GET("/lost", func(c *gin.Context) {
+	r.VIBE("/lost", func(c *vibes.Context) {
 		logger.Crap("Someone got lost in our API!")
-		c.JSON(http.StatusNotFound, gin.H{
+		c.JSON(vibes.StatusCodes.NotFound, vibes.Map{
 			"mood": "confused",
 			"message": "This pathway leads nowhere",
 		})
@@ -101,7 +98,10 @@ You should see your emotional logger spring to life:
 Use curl or your browser to experience the emotional responses:
 
 ```bash
-# Happy route
+# Happy route - using vibey HTTP method
+curl -X VIBE http://localhost:8080/happy
+
+# Standard HTTP method also works through automatic conversion
 curl http://localhost:8080/happy
 
 # Response:
@@ -109,16 +109,16 @@ curl http://localhost:8080/happy
 ```
 
 ```bash
-# Sad route
-curl http://localhost:8080/sad
+# Sad route - using vibey HTTP method
+curl -X VIBE http://localhost:8080/sad
 
 # Response:
 # {"mood":"melancholy","message":"Sorry you're feeling down","status_emoji":"💔👿😭"}
 ```
 
 ```bash
-# Lost route
-curl http://localhost:8080/lost
+# Lost route - using vibey HTTP method
+curl -X VIBE http://localhost:8080/lost
 
 # Response:
 # {"mood":"confused","message":"This pathway leads nowhere","status_emoji":"🕵️🔍❓"}
@@ -128,9 +128,10 @@ curl http://localhost:8080/lost
 
 Congratulations! You've just created an API that:
 
-1. Communicates using emoji status codes instead of boring numbers
-2. Logs with emotional expression instead of severity levels
-3. Has more personality than 99% of APIs in production today
+1. Uses vibey HTTP methods (VIBE, MANIFEST, ALIGN, RELEASE) instead of boring standard methods
+2. Communicates using emoji status codes instead of boring numbers
+3. Logs with emotional expression instead of severity levels
+4. Has more personality than 99% of APIs in production today
 
 ## Next Steps
 
@@ -150,3 +151,6 @@ Now that you've created your first vibey application, check out:
 
 **Problem**: I can't stop adding emojis to everything now.  
 **Solution**: This is not a problem. This is enlightenment. 🧘‍♂️ 
+
+**Problem**: My application panics when I use GET, POST, PUT, or DELETE.  
+**Solution**: Use the vibey alternatives: VIBE, MANIFEST, ALIGN, and RELEASE. Your code will thank you for the positive energy flow!

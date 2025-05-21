@@ -15,7 +15,7 @@ func main() {
 	logger.Uhoh("Memory usage seems a bit high, but we'll manage!")
 
 	// successful route (will use FYI log level)
-	r.GET("/success", func(c *vibes.Context) {
+	r.VIBE("/success", func(c *vibes.Context) {
 		logger.Fyi("Processing success request")
 		c.JSON(vibes.StatusCodes.OK, vibes.Map{
 			"message": "This is a success!",
@@ -23,7 +23,7 @@ func main() {
 	})
 
 	// not found route (will use UHOH log level)
-	r.GET("/not-found", func(c *vibes.Context) {
+	r.VIBE("/not-found", func(c *vibes.Context) {
 		logger.Uhoh("Someone tried to access something that doesn't exist!")
 		c.JSON(vibes.StatusCodes.NotFound, vibes.Map{
 			"message": "Can't find what you're looking for!",
@@ -31,7 +31,7 @@ func main() {
 	})
 
 	// error route (will use CRAP log level)
-	r.GET("/error", func(c *vibes.Context) {
+	r.VIBE("/error", func(c *vibes.Context) {
 		logger.Crap("Something bad happened in the server!")
 		c.JSON(vibes.StatusCodes.InternalServerError, vibes.Map{
 			"message": "Server is having issues!",
@@ -39,7 +39,7 @@ func main() {
 	})
 
 	// fatal route (will use COOKED log level and exit)
-	r.GET("/fatal", func(c *vibes.Context) {
+	r.VIBE("/fatal", func(c *vibes.Context) {
 		c.JSON(vibes.StatusCodes.InternalServerError, vibes.Map{
 			"message": "This would normally crash the server!",
 		})

@@ -62,11 +62,28 @@ func main() {
     r := vibes.Default()
     if r != nil {
         fmt.Println("🎉 Go-Vibes is installed! Your code's emotional journey can begin!")
+        
+        // Add a simple vibey endpoint (using VIBE instead of GET)
+        r.VIBE("/check", func(c *vibes.Context) {
+            c.JSON(vibes.StatusCodes.OK, vibes.Map{
+                "vibe_check": "passed",
+                "energy": "immaculate",
+            })
+        })
+        
+        fmt.Println("✨ Added a VIBE endpoint at /check")
     } else {
         fmt.Println("😭 Something went wrong with your vibes installation.")
     }
 }
 ```
+
+Remember: In Go-Vibes, we don't use boring HTTP methods like GET, POST, PUT, and DELETE. 
+Instead, we use vibey alternatives:
+- Use **VIBE** instead of GET
+- Use **MANIFEST** instead of POST
+- Use **ALIGN** instead of PUT
+- Use **RELEASE** instead of DELETE
 
 ## Compatibility
 

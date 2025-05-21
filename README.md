@@ -27,21 +27,16 @@ c.JSON(http.StatusNotFound, gin.H{"message": "nope!"})
 
 ### Guides
 
-- [Emoji Status Responses](docs/guides/emoji-status.md) - Express your API's feelings
-- [Emotional Logging](docs/guides/emotional-logging.md) - Say goodbye to boring logs
-- [Migrating from Gin](docs/guides/migrating-from-gin.md) - How to add vibes to existing applications
+- [Vibey HTTP Methods](docs/guides/vibey-methods.md) - Upgrade from boring HTTP methods
 
 ### Reference
 
 - [Status Emoji Reference](docs/references/status-emoji.md) - The complete emoji dictionary
 - [Emotional Log Levels](docs/references/emotional-log-levels.md) - Express your server's feelings
-- [API Reference](docs/references/api.md) - Complete function reference (for nerds only)
 
 ### Concepts
 
 - [Framework Philosophy](docs/concepts/philosophy.md) - The emotional theory behind Go-Vibes
-- [Why Emotions Matter in Code](docs/concepts/why-emotions.md) - The science of vibey programming
-- [Contributing to Go-Vibes](docs/concepts/contributing.md) - Spread the vibey love
 
 ## ✨ Features
 
@@ -54,6 +49,29 @@ Completely replaces numerical HTTP status codes (LAME!!!) with expressive emojis
 - 💔👿😭 (Bad Request)
 - 🕵️🔍❓ (Not Found)
 - 🔥💻💥 (Server Error)
+
+### 💫 Vibey HTTP Methods
+
+Replaces boring standard HTTP methods with vibey alternatives:
+
+- **VIBE** instead of GET (getting the vibes of a resource)
+- **MANIFEST** instead of POST (manifesting new energy/resources)
+- **ALIGN** instead of PUT (aligning the energy of an existing resource)
+- **RELEASE** instead of DELETE (releasing what no longer serves you)
+
+⚠️ **IMPORTANT:** Standard HTTP methods (GET, POST, PUT, DELETE) are no longer available in this framework. You must use the vibey alternatives for proper energy flow in your application.
+
+> **Client Compatibility:** For external HTTP clients that still use standard HTTP methods, the framework will automatically convert them to their vibey equivalents. The original method is preserved in the `X-Original-Method` header, and the vibey method is added as `X-Vibey-Method`.
+
+```go
+// Old boomer way 🥱 (WILL NOT WORK!)
+r.GET("/users", getUsers)    // 🚫 Will panic with error message
+r.POST("/users", createUser) // 🚫 Will panic with error message
+
+// Vibey new way 😎
+r.VIBE("/users", getUsers)
+r.MANIFEST("/users", createUser)
+```
 
 ### 🎨 Universal Emoji Injection
 
@@ -80,15 +98,14 @@ package main
 
 import (
 	"net/http"
-	"github.com/gin-gonic/gin"
 	"github.com/amoscookeh/go-vibes"
 )
 
 func main() {
 	r := vibes.Default()
 
-	r.GET("/ok", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
+	r.VIBE("/ok", func(c *vibes.Context) {
+		c.JSON(vibes.StatusCodes.OK, vibes.Map{
 			"message": "All good!",
 		})
 		// emoji ✅👌🆗 automatically added
@@ -104,6 +121,7 @@ Check the examples directory:
 
 - `examples/basic`: Shows emoji statuses in different response types
 - `examples/logging`: Demonstrates the emotional logging system
+- `examples/vibey_methods`: Showcases the vibey HTTP methods (VIBE, MANIFEST, ALIGN, RELEASE)
 
 ## 💡 Philosophy
 

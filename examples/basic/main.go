@@ -9,38 +9,38 @@ func main() {
 	r := vibes.Default()
 
 	// Define routes
-	r.GET("/ok", func(c *vibes.Context) {
+	r.VIBE("/ok", func(c *vibes.Context) {
 		c.JSON(vibes.StatusCodes.OK, vibes.Map{
 			"message": "All good! Check the status emoji!",
 		})
 	})
 
-	r.GET("/created", func(c *vibes.Context) {
+	r.VIBE("/created", func(c *vibes.Context) {
 		c.JSON(vibes.StatusCodes.Created, vibes.Map{
 			"message": "Resource created! Check the status emoji!",
 		})
 	})
 
-	r.GET("/bad-request", func(c *vibes.Context) {
+	r.VIBE("/bad-request", func(c *vibes.Context) {
 		c.JSON(vibes.StatusCodes.BadRequest, vibes.Map{
 			"message": "Bad request! Check the status emoji!",
 		})
 	})
 
-	r.GET("/not-found", func(c *vibes.Context) {
+	r.VIBE("/not-found", func(c *vibes.Context) {
 		c.JSON(vibes.StatusCodes.NotFound, vibes.Map{
 			"message": "Not found! Check the status emoji!",
 		})
 	})
 
-	r.GET("/server-error", func(c *vibes.Context) {
+	r.VIBE("/server-error", func(c *vibes.Context) {
 		c.JSON(vibes.StatusCodes.InternalServerError, vibes.Map{
 			"message": "Server error! Check the status emoji!",
 		})
 	})
 
 	// HTML response example
-	r.GET("/html-ok", func(c *vibes.Context) {
+	r.VIBE("/html-ok", func(c *vibes.Context) {
 		c.HTML(vibes.StatusCodes.OK, `
 			<html>
 				<head>
@@ -64,7 +64,7 @@ func main() {
 	})
 
 	// HTML error example
-	r.GET("/html-error", func(c *vibes.Context) {
+	r.VIBE("/html-error", func(c *vibes.Context) {
 		c.HTML(vibes.StatusCodes.NotFound, `
 			<html>
 				<head>
@@ -87,7 +87,7 @@ func main() {
 		`)
 	})
 
-	r.GET("/text", func(c *vibes.Context) {
+	r.VIBE("/text", func(c *vibes.Context) {
 		c.String(vibes.StatusCodes.OK, "This is a plain text response. The emoji status should be prepended.")
 	})
 

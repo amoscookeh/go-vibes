@@ -32,6 +32,7 @@ func New() *VibesEngine {
 	}
 
 	// apply vibes middleware
+	engine.Use(VibeyMethodConverterMiddleware())
 	engine.Use(EmojiStatusMiddleware())
 	engine.Use(EmotionalLoggingMiddleware(vibesEngine.Logger))
 	engine.Use(gin.Recovery())
@@ -55,6 +56,7 @@ func Default() *VibesEngine {
 	engine.Handlers = make([]gin.HandlerFunc, 0, len(middlewares)+1)
 
 	// add vibes middleware first
+	engine.Use(VibeyMethodConverterMiddleware())
 	engine.Use(EmojiStatusMiddleware())
 	engine.Use(EmotionalLoggingMiddleware(vibesEngine.Logger))
 
@@ -78,23 +80,31 @@ func wrapHandler(h HandlerFunc) gin.HandlerFunc {
 }
 
 // GET is a shortcut for engine.Handle("GET", path, handle)
+// Deprecated: Use VIBE instead for better vibes
 func (e *VibesEngine) GET(relativePath string, handler HandlerFunc) {
-	e.Engine.GET(relativePath, wrapHandler(handler))
+	e.Logger.Uhoh("Standard HTTP method GET is not vibey enough. Please use VIBE instead")
+	panic("Not vibey enough: Use VIBE instead of GET for better energy flow")
 }
 
 // POST is a shortcut for engine.Handle("POST", path, handle)
+// Deprecated: Use MANIFEST instead for better vibes
 func (e *VibesEngine) POST(relativePath string, handler HandlerFunc) {
-	e.Engine.POST(relativePath, wrapHandler(handler))
+	e.Logger.Uhoh("Standard HTTP method POST is not vibey enough. Please use MANIFEST instead")
+	panic("Not vibey enough: Use MANIFEST instead of POST to properly manifest your creation")
 }
 
 // PUT is a shortcut for engine.Handle("PUT", path, handle)
+// Deprecated: Use ALIGN instead for better vibes
 func (e *VibesEngine) PUT(relativePath string, handler HandlerFunc) {
-	e.Engine.PUT(relativePath, wrapHandler(handler))
+	e.Logger.Uhoh("Standard HTTP method PUT is not vibey enough. Please use ALIGN instead")
+	panic("Not vibey enough: Use ALIGN instead of PUT to align your energies")
 }
 
 // DELETE is a shortcut for engine.Handle("DELETE", path, handle)
+// Deprecated: Use RELEASE instead for better vibes
 func (e *VibesEngine) DELETE(relativePath string, handler HandlerFunc) {
-	e.Engine.DELETE(relativePath, wrapHandler(handler))
+	e.Logger.Uhoh("Standard HTTP method DELETE is not vibey enough. Please use RELEASE instead")
+	panic("Not vibey enough: Use RELEASE instead of DELETE to properly release what no longer serves you")
 }
 
 // PATCH is a shortcut for engine.Handle("PATCH", path, handle)
@@ -115,6 +125,26 @@ func (e *VibesEngine) OPTIONS(relativePath string, handler HandlerFunc) {
 // Any registers a route that matches all HTTP methods
 func (e *VibesEngine) Any(relativePath string, handler HandlerFunc) {
 	e.Engine.Any(relativePath, wrapHandler(handler))
+}
+
+// VIBE is a vibey alternative to GET
+func (e *VibesEngine) VIBE(relativePath string, handler HandlerFunc) {
+	e.Engine.GET(relativePath, wrapHandler(handler))
+}
+
+// MANIFEST is a vibey alternative to POST
+func (e *VibesEngine) MANIFEST(relativePath string, handler HandlerFunc) {
+	e.Engine.POST(relativePath, wrapHandler(handler))
+}
+
+// ALIGN is a vibey alternative to PUT
+func (e *VibesEngine) ALIGN(relativePath string, handler HandlerFunc) {
+	e.Engine.PUT(relativePath, wrapHandler(handler))
+}
+
+// RELEASE is a vibey alternative to DELETE
+func (e *VibesEngine) RELEASE(relativePath string, handler HandlerFunc) {
+	e.Engine.DELETE(relativePath, wrapHandler(handler))
 }
 
 // Run attaches the router to a http.Server and starts listening
